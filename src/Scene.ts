@@ -5,7 +5,9 @@ class Scene {
   public scenes: SceneConfig = {};
 
   public addStep(step: Step) {
-    const lastKey = Math.max(...Object.keys(this.scenes).map(Number));
+    const keys = Object.keys(this.scenes);
+    const lastKey = keys.length === 0 ? -1 : Math.max(...keys.map((k) => Number(k)));
+
     this.scenes[lastKey + 1] = step;
   }
 
