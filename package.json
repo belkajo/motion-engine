@@ -2,7 +2,7 @@
   "name": "@belkajo/motion-engine",
   "version": "0.1.0",
   "description": "Tiny stateful animation sequence engine on top of framer-motion.",
-  "main": "dist/index.cjs",
+  "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "sideEffects": false,
@@ -18,7 +18,7 @@
     "sequence"
   ],
   "author": "@belkajo",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "react": ">=18",
     "framer-motion": ">=11"
