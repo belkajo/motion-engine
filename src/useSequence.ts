@@ -19,6 +19,7 @@ const useSequence = (scene: Scene) => {
   }, []);
 
   return {
+    setCurrentStep,
     currentStep,
     onStart,
     onDone,

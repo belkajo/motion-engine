@@ -19,15 +19,18 @@ const AnimatedElement: React.FC<Props> = ({
   onStart,
 }) => {
   const id = useMemo(() => crypto.randomUUID(), []);
-  let variationStr: string | false = false;
-
+  let variationStr: string | false | undefined = false;
   const variation = step === -1 ? undefined : variants[step] ? step : undefined;
 
   const hasVariantForStep = variation !== undefined;
 
-  if (variation) {
+  if (variation !== undefined) {
     variationStr = `${variation}`;
   }
+  if (step === -1) {
+    variationStr = undefined;
+  }
+  console.log("cs", step, variants, variation);
 
   return (
     <motion.div
@@ -35,9 +38,11 @@ const AnimatedElement: React.FC<Props> = ({
       variants={variants}
       animate={variationStr}
       onAnimationStart={() => {
+        console.log("a-s", id, hasVariantForStep);
         if (hasVariantForStep && onStart) onStart(id);
       }}
       onAnimationComplete={() => {
+        console.log("a-c", id, hasVariantForStep);
         if (hasVariantForStep && onDone) onDone(id);
       }}
     >

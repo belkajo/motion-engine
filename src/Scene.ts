@@ -9,6 +9,7 @@ class Scene {
     const lastKey = keys.length === 0 ? -1 : Math.max(...keys.map((k) => Number(k)));
 
     this.scenes[lastKey + 1] = step;
+    return this;
   }
 
   public buildVariantsFor(formId: string) {
