@@ -1,12 +1,12 @@
 import { Variant } from "framer-motion";
 
-export interface StepConfig {
+interface StepConfig<TState = unknown> {
   variant: Variant;
-  state: any;
+  state: TState;
 }
 
-type Step = Record<string, StepConfig>;
+type Step<TState = unknown> = Record<string, StepConfig<TState>>;
 
-type SceneConfig = Record<number, Step>;
+type SceneConfig<TState = unknown> = Record<number, Step<TState>>;
 
-export type { SceneConfig, Step };
+export type { SceneConfig, Step, StepConfig };
