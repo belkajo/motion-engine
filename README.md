@@ -24,16 +24,6 @@ In a pnpm monorepo:
 pnpm add @belkajo/motion-engine --filter <your-app>
 ```
 
-Or add manually:
-
-```json
-{
-  "dependencies": {
-    "@belkajo/motion-engine": "workspace:*"
-  }
-}
-```
-
 ---
 
 ## 🧱 Basic Concepts
@@ -97,6 +87,12 @@ const { currentStep, onStart, onDone, setCurrentStep } = useSequence(scene);
 
 ---
 
+### 🔄 Resetting and restarting a sequence (important)
+
+Give time to finish the animations after reset before starting the animation scenes.
+
+
+
 ## 🎬 AnimatedElement
 
 Use instead of `motion.div` to integrate sequencing:
@@ -111,6 +107,14 @@ Use instead of `motion.div` to integrate sequencing:
   <YourComponent />
 </AnimatedElement>
 ```
+
+**Note on stability**
+
+`AnimatedElement` generates a stable internal `id` (via `useMemo`) which is used by `useSequence`
+to track running animations. This is intentional.
+
+Avoid conditionally changing or remounting individual `AnimatedElement`s unless you explicitly
+want to cancel their animations.
 
 ---
 
