@@ -1,9 +1,13 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Scene from "./Scene";
 
 const useSequence = (scene: Scene) => {
   const isAnimating = useRef<Record<string, boolean>>({});
   const [currentStep, setCurrentStep] = useState<number>(-1);
+
+  useEffect(() => {
+    if (currentStep === -1) isAnimating.current = {};
+  }, [currentStep]);
 
   const onStart = useCallback((id: string) => {
     isAnimating.current[id] = true;
