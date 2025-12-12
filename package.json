@@ -1,6 +1,6 @@
 {
   "name": "@belkajo/motion-engine",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Tiny stateful animation sequence engine on top of framer-motion.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
